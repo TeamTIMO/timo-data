@@ -123,7 +123,7 @@ Mochawesome-Report: docs/mochawesome-report/index.html
 
 ClassDiagram:
 
-![The diagram](https://github.com/TeamTIMO/timo-data/raw/master/docs/classes.png "The class Diagram")
+![The class diagram](https://github.com/TeamTIMO/timo-data/raw/master/docs/classes.png "The class Diagram")
 
 Can be found in docs/classes.png
 
@@ -131,7 +131,7 @@ Also as editable plantUML-File.
 
 SequenceDiagram:
 
-![The diagram](https://github.com/TeamTIMO/timo-data/raw/master/docs/sequence.png "The sequece Diagram")
+![The sequence diagram](https://github.com/TeamTIMO/timo-data/raw/master/docs/sequence.png "The sequence Diagram")
 
 Can be found in docs/sequence.png
 
@@ -174,13 +174,3 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>
-
----
-
-## TODO
-
-* Add raml for api
-* puml sequence for routes and main
-* render stuff and copy to docs
-	* raml
-	* puml
