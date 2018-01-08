@@ -19,10 +19,22 @@
  * @const
  */
  var express = require('express')
+ var bodyParser = require('body-parser')
  var app = express()
  var server = require('http').createServer(app)
  const uuid = require('uuid4')
- var Database = require('database')
+ var Database = require('./lib/database.js')
+
+// Accept JSON Body
+ app.use(bodyParser.json())
+ app.use(bodyParser.urlencoded({
+   extended: true
+ }))
+
+// Overwrite DBFile Location
+ if (process.argv.length >= 3) {
+   config.dbfilelocation = process.argv[2]
+ }
  var myDB = new Database(config.dbfilelocation, uuid)
 
 // Listen to Port
@@ -52,7 +64,7 @@
    })
  })
  app.get('/:id', function (req, res) {
-   myDB.get(req.params.id, function (err, entry) {
+   myDB.getEntry(req.params.id, function (err, entry) {
      if (err) {
        res.status(404).send(err)
      } else {
@@ -61,25 +73,26 @@
    })
  })
  app.post('/', function (req, res) {
-   myDB.add(req.body, function (err, entry) {
+   console.log(req.body)
+   myDB.addEntry(req.body, function (err, entry) {
      if (err) {
-       res.status(403).send(err)
+       res.status(400).send(err)
      } else {
-       res.send(entry)
+       res.status(201).send(entry)
      }
    })
  })
  app.put('/:id', function (req, res) {
-   myDB.update(req.params.id, req.body, function (err, entry) {
+   myDB.updateEntry(req.params.id, req.body, function (err, entry) {
      if (err) {
-       res.status(404).send(err)
+       res.status(err.status).send(err.error)
      } else {
        res.send(entry)
      }
    })
  })
  app.delete('/:id', function (req, res) {
-   myDB.delete(req.params.id, function (err, entry) {
+   myDB.deleteEntry(req.params.id, function (err, entry) {
      if (err) {
        res.status(404).send(err)
      } else {
