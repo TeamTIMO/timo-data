@@ -33,6 +33,16 @@
       "examples": [
         "/var/files/test.mp3"
       ]
+    },
+    "comment": {
+      "$id": "/properties/comment",
+      "type": "string",
+      "title": "The comment Schema",
+      "description": "Some Comment to Help identify the entry",
+      "default": "",
+      "examples": [
+        "My First mp3"
+      ]
     }
   },
   "required": [

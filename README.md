@@ -24,7 +24,8 @@ __Example:__
   {
     "id":"ef5e5247-9cce-4de9-acc9-0d17b3850f94",
     "source":"local",
-    "link":"/var/files/test.mp3"
+    "link":"/var/files/test.mp3",
+    "comment":"my first mp3"
   },
   ...
 ]
@@ -75,6 +76,16 @@ Where is this file? Local, YOuTube, Spotify, ...
       "default": "",
       "examples": [
         "/var/files/test.mp3"
+      ]
+    },
+    "comment": {
+      "$id": "/properties/comment",
+      "type": "string",
+      "title": "The comment Schema",
+      "description": "Some Comment to Help identify the entry",
+      "default": "",
+      "examples": [
+        "My First mp3"
       ]
     }
   },

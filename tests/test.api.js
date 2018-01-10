@@ -11,27 +11,32 @@ var testPort = 55555
 var object1 = {
   id: 'ef5e5247-9cce-4de9-acc9-0d17b3850f94',
   source: 'local',
-  link: '/var/files/test.mp3'
+  link: '/var/files/test.mp3',
+  comment: 'My First mp3'
 }
 var object2 = {
   id: 'ef5e5247-9cce-4de9-acc9-0d17b3850f78',
   source: 'youtube',
-  link: 'http://alink'
+  link: 'http://alink',
+  comment: 'Very Cool Video with awesome sound'
 }
 var object3 = {
   id: 'ef5e5247-9cce-4de9-acc9-0d17b3850f21',
   source: 'local',
-  link: '/var/files/test4.mp3'
+  link: '/var/files/test4.mp3',
+  comment: ''
 }
 var object4 = {
   id: 'cd5e5247-9cce-4de9-acc9-0d17b3850f21',
   source: 'local',
-  link: '/var/files/testnew.mp3'
+  link: '/var/files/testnew.mp3',
+  comment: ' A whole new file'
 }
 var object5 = {
   id: 'cd5e5247-9cce-4de9-acc9-0d17b3850f21',
   source: 'local',
-  link: '/var/files/another.mp3'
+  link: '/var/files/another.mp3',
+  comment: 'some mp3 i found'
 }
 var server
 describe('UT02: API', function () {
