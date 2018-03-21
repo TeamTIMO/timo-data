@@ -6,31 +6,36 @@ var path = require('path')
 var fs = require('fs')
 var object1 = {
   id: 'ef5e5247-9cce-4de9-acc9-0d17b3850f94',
-  source: 'local',
+  type: 'mp3',
+  subtype: 'single',
   link: '/var/files/test.mp3',
   comment: 'My First mp3'
 }
 var object2 = {
   id: 'ef5e5247-9cce-4de9-acc9-0d17b3850f78',
   source: 'youtube',
+  subtype: 'single',
   link: 'http://alink',
   comment: 'Very Cool Video with awesome sound'
 }
 var object3 = {
   id: 'ef5e5247-9cce-4de9-acc9-0d17b3850f21',
-  source: 'local',
+  type: 'mp3',
+  subtype: 'single',
   link: '/var/files/test4.mp3',
   comment: ''
 }
 var object4 = {
   id: 'cd5e5247-9cce-4de9-acc9-0d17b3850f21',
-  source: 'local',
+  type: 'mp3',
+  subtype: 'single',
   link: '/var/files/testnew.mp3',
   comment: ' A whole new file'
 }
 var object5 = {
   id: 'cd5e5247-9cce-4de9-acc9-0d17b3850f21',
-  source: 'local',
+  type: 'mp3',
+  subtype: 'single',
   link: '/var/files/another.mp3',
   comment: 'some mp3 i found'
 }
@@ -98,30 +103,32 @@ describe('UT01: database', function () {
       })
     })
   })
-  describe('UT01-03: database.sources', function () {
+  describe('UT01-03: database.types', function () {
     it('UT01-03-01: should throw an error with no callback given', function (done) {
       Tdatabase = new Database(dbPath, uuid)
       try {
-        Tdatabase.sources()
+        Tdatabase.types()
         done(new Error('there should be an error here'))
       } catch (error) {
         done()
       }
     })
-    it('UT01-03-02: should callback all sources', function (done) {
+    it('UT01-03-02: should callback all types', function (done) {
       Tdatabase = new Database(dbPath, uuid)
-      Tdatabase.sources(function (error, sources) {
+      Tdatabase.types(function (error, types) {
         if (error) {
           done(error)
         } else {
-          assert.equal(sources.length, 2)
-          if (sources.indexOf('local') < 0) {
-            done(new Error('Source local missing'))
+          assert.equal(types.length, 2)
+          if (types.indexOf('mp3') < 0) {
+            done(new Error('Source mp3 missing'))
+          } else {
+            if (types.indexOf('youtube') < 0) {
+              done(new Error('Source youtube missing'))
+            } else {
+              done()
+            }
           }
-          if (sources.indexOf('youtube') < 0) {
-            done(new Error('Source youtube missing'))
-          }
-          done()
         }
       })
     })

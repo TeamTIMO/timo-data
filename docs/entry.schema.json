@@ -14,14 +14,24 @@
         "ef5e5247-9cce-4de9-acc9-0d17b3850f94"
       ]
     },
-    "source": {
-      "$id": "/properties/source",
+    "type": {
+      "$id": "/properties/type",
       "type": "string",
-      "title": "The Source Schema",
-      "description": "The Source of the Audio.",
+      "title": "The Type Schema",
+      "description": "The Type of the Audio.",
       "default": "",
       "examples": [
-        "local", "youtube", "spotify"
+        "mp3", "youtube", "spotify"
+      ]
+    },
+    "subtype": {
+      "$id": "/properties/subtype",
+      "type": "string",
+      "title": "The Subtype Schema",
+      "description": "The Subtype of the Audio.",
+      "default": "",
+      "examples": [
+        "single", "album", "playlist"
       ]
     },
     "link": {
@@ -46,7 +56,8 @@
     }
   },
   "required": [
-    "source",
+    "type",
+    "subtype",
     "link"
   ]
 }

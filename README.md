@@ -23,7 +23,8 @@ __Example:__
 [
   {
     "id":"ef5e5247-9cce-4de9-acc9-0d17b3850f94",
-    "source":"local",
+    "type":"mp3",
+    "subtype":"single",
     "link":"/var/files/test.mp3",
     "comment":"my first mp3"
   },
@@ -35,9 +36,14 @@ __Example:__
 
 UUID, used on the rfid cards
 
-### source
+### type
 
-Where is this file? Local, YOuTube, Spotify, ...
+What is this file? mp3, YOuTube, Spotify, ...
+(Decides, which player-lib is used)
+
+### subtype
+
+Helps the player-lib to decide what to do
 
 ### Schema
 
@@ -58,14 +64,24 @@ Where is this file? Local, YOuTube, Spotify, ...
         "ef5e5247-9cce-4de9-acc9-0d17b3850f94"
       ]
     },
-    "source": {
-      "$id": "/properties/source",
+    "type": {
+      "$id": "/properties/type",
       "type": "string",
-      "title": "The Source Schema",
-      "description": "The Source of the Audio.",
+      "title": "The Type Schema",
+      "description": "The Type of the Audio.",
       "default": "",
       "examples": [
-        "local", "youtube", "spotify"
+        "mp3", "youtube", "spotify"
+      ]
+    },
+    "subtype": {
+      "$id": "/properties/subtype",
+      "type": "string",
+      "title": "The Subtype Schema",
+      "description": "The Subtype of the Audio.",
+      "default": "",
+      "examples": [
+        "single", "album", "playlist"
       ]
     },
     "link": {
@@ -90,7 +106,8 @@ Where is this file? Local, YOuTube, Spotify, ...
     }
   },
   "required": [
-    "source",
+    "type",
+    "subtype",
     "link"
   ]
 }
@@ -106,7 +123,7 @@ See also docs/api.raml or docs/api.html
 
 * GET / <- return full json
 * GET /:id <- return data json for id
-* GET /sources <- return all sources
+* GET /types <- return all types in database
 * POST / <- add new entry
 * PUT /:id <- update entry with id
 * DELETE /:id <- delete entry with id

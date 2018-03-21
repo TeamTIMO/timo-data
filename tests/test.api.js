@@ -10,31 +10,36 @@ var dbPath = './tests/testdatabase.json'
 var testPort = 55555
 var object1 = {
   id: 'ef5e5247-9cce-4de9-acc9-0d17b3850f94',
-  source: 'local',
+  type: 'mp3',
+  subtype: 'single',
   link: '/var/files/test.mp3',
   comment: 'My First mp3'
 }
 var object2 = {
   id: 'ef5e5247-9cce-4de9-acc9-0d17b3850f78',
   source: 'youtube',
+  subtype: 'single',
   link: 'http://alink',
   comment: 'Very Cool Video with awesome sound'
 }
 var object3 = {
   id: 'ef5e5247-9cce-4de9-acc9-0d17b3850f21',
-  source: 'local',
+  type: 'mp3',
+  subtype: 'single',
   link: '/var/files/test4.mp3',
   comment: ''
 }
 var object4 = {
   id: 'cd5e5247-9cce-4de9-acc9-0d17b3850f21',
-  source: 'local',
+  type: 'mp3',
+  subtype: 'single',
   link: '/var/files/testnew.mp3',
   comment: ' A whole new file'
 }
 var object5 = {
   id: 'cd5e5247-9cce-4de9-acc9-0d17b3850f21',
-  source: 'local',
+  type: 'mp3',
+  subtype: 'single',
   link: '/var/files/another.mp3',
   comment: 'some mp3 i found'
 }
@@ -67,18 +72,18 @@ describe('UT02: API', function () {
       })
     })
   })
-  describe('UT02-02: GET /sources', function () {
-    it('UT02-02-01: Should List all sources', function (done) {
-      superagent.get(uri + '/sources').end(function (err, res) {
+  describe('UT02-02: GET /types', function () {
+    it('UT02-02-01: Should List all types', function (done) {
+      superagent.get(uri + '/types').end(function (err, res) {
         assert.ifError(err)
         assert.equal(res.status, status.OK)
         var result = JSON.parse(res.text)
         assert.equal(result.length, 2)
-        if (result.indexOf('local') < 0) {
-          done(new Error('Source local missing'))
+        if (result.indexOf('mp3') < 0) {
+          done(new Error('Type mp3 missing'))
         }
         if (result.indexOf('youtube') < 0) {
-          done(new Error('Source youtube missing'))
+          done(new Error('Type youtube missing'))
         }
         done()
       })
@@ -214,7 +219,7 @@ describe('UT02: API', function () {
     })
   })
   describe('UT02-06: DELETE /:id', function () {
-    it('UT02-06-01: Should Delete an Account', function (done) {
+    it('UT02-06-01: Should Delete an Entry', function (done) {
       superagent.delete(uri + '/' + object4.id).end(function (err, res) {
         assert.ifError(err)
         assert.equal(res.status, status.OK)

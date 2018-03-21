@@ -54,12 +54,12 @@
      }
    })
  })
- app.get('/sources', function (req, res) {
-   myDB.sources(function (err, sources) {
+ app.get('/types', function (req, res) {
+   myDB.types(function (err, types) {
      if (err) {
        res.status(500).send(err)
      } else {
-       res.send(sources)
+       res.send(types)
      }
    })
  })
